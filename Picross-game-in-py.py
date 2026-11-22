@@ -12,21 +12,22 @@ import keyboard
 
 # all need to be 500 by 500 px
 
-
+size=25
 Picross_list=[[],]          #List of all curent picross
 Solution_list=[]            #Current playing picross 
 Player_list=[]              #Squares placed by player
 
-def start_player_list(P_list,size):
-
+def start_player_list(size):
+    P_list=[]
     for i in range (size):
         P_list.append([])
         for i in range (size):
             P_list[-1].append(0)
+    return P_list
 
 
 
-
+Player_list=start_player_list(size)
 
 
 
@@ -51,6 +52,7 @@ def choose (picross_size):
 
 def grid(rows,columns,size) : #set a grid of rows and columns with square 
     setheading(90)
+    color('black')
     for a in range (columns+1):
         penup()
         goto(a*size,0)
@@ -66,7 +68,7 @@ def grid(rows,columns,size) : #set a grid of rows and columns with square
         forward(size*(columns))
 
 def arrow(x,y,orientation,size):   #make an arrow of size of the block ex:  for box of 50x50px. arrow is 50 in size
-    size=size/2
+    size=size/4
     size=sqrt(size*size+size*size)
     penup()
     goto(x,y)
@@ -134,7 +136,7 @@ speed(0)
         forward(10)
  """
 
-def square (x,y,size,square_list,xlist,ylist):   #draw a square at coordinate to place a square on the picross
+def square (x,y,size,square_list,xlist,ylist):   #draw a square at coordinate to place a square on the picross 
     penup()
     setheading(0)
     goto(x-size/2,y-size/2)
@@ -151,6 +153,49 @@ def square (x,y,size,square_list,xlist,ylist):   #draw a square at coordinate to
 
     else:
         square_list[xlist][ylist]=1
+
+    
+        
+def show_square (size,square_list):   #draws squares on picross with the player_list
+
+    if size == 5:   #give the number of px to move to be aligned with the grid 
+        mult=100
+    if size == 10:
+        mult=50
+    if size == 15:
+        mult=33
+    if size == 20:
+        mult=25
+    if size == 25:
+        mult=20
+
+
+    penup()
+    setheading(0)
+    for y in range (len(square_list[-1])):
+        for x in range (len(square_list[-1])):
+            if square_list[x][y]==1:
+                color('black')
+                goto(x*mult,-y*mult+((size-1)*mult))
+                pendown()
+                begin_fill()
+                for i in range (4):
+                    forward(mult)
+                    left(90)
+                end_fill()
+                penup()
+            else:
+                color('white')
+                goto(x*mult,-y*mult+((size-1)*mult))
+                pendown()
+                begin_fill()
+                for i in range (4):
+                    forward(mult)
+                    left(90)
+                end_fill()
+                penup()
+    color('black')
+   
         
 
     
@@ -191,64 +236,69 @@ def control (size,square_list):
             cursor_column=cursor_column+move
             clearscreen()
             tracer(0,0)
-            choose(size)
             arrow(cursor_row,500,'down',move)
             arrow(0,cursor_column,'right',move)
+            show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
+            choose(size)
             ylistpos-=1
             tracer(1,0)
-            sleep(0.1)
+            sleep(0.05)
             print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('down'):
             cursor_column=cursor_column-move
             clearscreen()
             tracer(0,0)
-            choose(size)
             arrow(cursor_row,500,'down',move)
             arrow(0,cursor_column,'right',move)
+            show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
+            choose(size)
             ylistpos+=1
             tracer(1,0)
-            sleep(0.1)
+            sleep(0.05)
             print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('right'):
             cursor_row=cursor_row+move
             clearscreen()
             tracer(0,0)
-            choose(size)
             arrow(cursor_row,500,'down',move)
             arrow(0,cursor_column,'right',move)
+            show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
+            choose(size)
             xlistpos+=1
             tracer(1,0)
-            sleep(0.1)
+            sleep(0.05)
             print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('left'):
             cursor_row=cursor_row-move
             clearscreen()
             tracer(0,0)
-            choose(size)
             arrow(cursor_row,500,'down',move)
             arrow(0,cursor_column,'right',move)
+            show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
+            choose(size)
             xlistpos-=1
             tracer(1,0)
-            sleep(0.1)
+            sleep(0.05)
             print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('c'):
             clearscreen()
             tracer(0,0)
-            choose(size)
             arrow(cursor_row,500,'down',move)
             arrow(0,cursor_column,'right',move)
             square(cursor_row,cursor_column,move,square_list,xlistpos,ylistpos)
+            show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
+            choose(size)
             tracer(1,0)
-            sleep(0.1)
+            sleep(0.05)
             print(cursor_column,cursor_row)
 
         
@@ -260,6 +310,6 @@ def control (size,square_list):
 
 
 
-control(5,Player_list)
+control(size,Player_list)
 
         

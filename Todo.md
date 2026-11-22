@@ -1,0 +1,2 @@
+- [ ] Invert color for cross on square
+- [ ] Fill cursor
