@@ -13,7 +13,110 @@ import keyboard
 # all need to be 500 by 500 px
 
 size=5
-Picross_list=[[],]          #List of all curent picross
+Picross_list=[[[[1,0,1,0,1],
+                [1,1,1,1,1],
+                [0,1,0,1,0],
+                [0,1,1,1,0],
+                [1,1,1,1,1]],'Castle'],
+                
+              [[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                [1,1,0,0,0,0,0,0,0,0,0,0,0,1,1],
+                [1,1,0,1,1,1,1,1,1,1,1,1,0,1,1],
+                [1,1,0,1,1,0,0,0,0,0,1,1,0,1,1],
+                [1,1,0,1,1,0,0,0,0,0,1,1,0,1,1],
+                [1,1,0,1,1,0,0,0,0,0,1,1,0,1,1],
+                [1,1,0,1,1,0,0,0,0,0,1,1,0,1,1],
+                [1,1,0,1,1,1,1,1,1,1,1,1,0,1,1],
+                [1,1,0,0,0,0,0,0,0,0,0,0,0,1,1],
+                [1,1,0,0,1,0,0,0,0,0,0,0,0,1,1],
+                [1,1,0,1,1,1,0,0,0,0,0,0,0,1,1],
+                [1,1,0,0,1,0,0,0,0,1,1,1,0,1,1],
+                [1,1,0,0,0,0,0,0,0,0,0,0,0,1,1],
+                [1,1,0,0,0,0,0,0,0,0,0,0,1,1,1],
+                [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],'Game Boy'],
+
+              [[[1,0,1,0,0,1,1,1,1,0],
+                [1,0,1,0,1,1,1,1,1,1],
+                [1,1,1,0,1,1,0,0,1,1],
+                [1,0,0,1,1,0,1,1,0,1],
+                [1,0,0,1,1,0,0,1,0,1],
+                [0,1,0,1,1,1,1,1,0,1],
+                [0,1,0,0,1,0,0,0,1,1],
+                [0,1,0,0,0,1,1,1,1,1],
+                [0,0,1,0,0,0,0,0,0,0],
+                [0,0,0,1,1,1,1,1,1,1]],'Snail'],
+
+              [[[0,0,0,1,0,1,0,1,0,0],
+                [0,0,0,1,0,1,0,1,0,1],
+                [0,0,0,1,0,1,0,1,0,1],
+                [0,0,0,1,0,1,0,1,0,1],
+                [0,0,0,1,1,1,1,1,1,1],
+                [1,1,0,1,1,1,1,1,1,1],
+                [1,1,1,1,1,1,1,1,1,1],
+                [0,1,1,1,1,1,1,1,1,1],
+                [0,0,1,1,1,1,1,1,1,1],
+                [0,0,0,1,1,1,1,1,1,0]],'Glove'],
+
+              [[[0,0,0,0,1,1,0,0,0,0],
+                [0,0,0,1,1,1,1,0,0,0],
+                [0,0,0,1,1,1,1,0,0,0],
+                [1,1,1,1,1,1,1,1,1,1],
+                [1,1,0,1,1,1,1,1,1,1],
+                [0,1,1,0,1,1,1,1,1,0],
+                [0,0,1,0,1,1,1,1,0,0],
+                [0,1,1,1,1,1,1,1,1,0],
+                [0,1,1,1,0,0,1,1,1,0],
+                [1,1,1,0,0,0,0,1,1,1]],'Star'],
+
+              [[[0,0,0,0,1,1,0,0,0,0],
+                [0,0,0,1,1,1,1,0,0,0],
+                [0,0,1,1,1,1,1,1,0,0],
+                [0,1,1,1,1,1,1,1,1,0],
+                [1,1,1,1,1,1,1,1,1,1],
+                [1,1,1,1,1,1,1,1,1,1],
+                [1,1,1,1,1,1,1,1,1,1],
+                [0,1,1,0,1,1,0,1,1,0],
+                [0,0,0,1,1,1,1,0,0,0],
+                [0,0,1,1,1,1,1,1,0,0]],'Spike'],
+
+              [[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,1,1,1,1,1,1,1,0,0,0,0],
+                [0,0,1,1,1,0,0,0,0,1,1,1,1,0,0],
+                [0,1,1,0,0,0,0,0,0,1,1,1,1,1,0],
+                [0,1,0,0,0,0,0,0,1,1,1,1,1,1,0],
+                [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+                [0,1,0,0,1,0,0,0,1,1,0,0,1,1,0],
+                [0,0,1,1,1,1,1,1,1,1,1,1,1,1,0],
+                [0,0,1,1,1,1,1,1,1,1,1,1,1,0,0],
+                [0,1,0,0,0,0,0,0,0,1,1,1,1,1,0],
+                [0,1,0,0,0,0,0,0,1,1,1,1,1,1,0],
+                [0,1,1,0,0,0,0,1,1,1,1,1,1,1,0],
+                [0,0,1,1,1,1,1,1,1,1,1,1,1,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],'Burger'],
+
+              [[[0,0,0,1,1,1,1,1,1,1,1,1,0,0,0],
+                [0,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
+                [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                [1,1,1,1,1,0,0,0,0,0,1,1,1,1,1],
+                [1,1,1,1,0,1,0,0,0,1,0,1,1,1,1],
+                [1,1,1,1,0,1,0,0,0,1,0,1,1,1,1],
+                [0,0,0,0,1,1,1,1,1,1,1,0,0,0,0],
+                [0,0,0,1,1,1,1,1,1,1,1,1,0,0,0],
+                [0,0,0,1,1,1,0,0,0,1,1,1,0,0,0],
+                [0,0,1,1,1,0,1,1,1,0,1,1,1,0,0],
+                [0,0,1,1,1,0,1,1,1,0,1,1,1,0,0],
+                [0,1,1,1,1,0,1,1,1,0,1,1,1,1,0],
+                [0,1,1,1,1,1,0,0,0,1,1,1,1,1,0],
+                [0,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
+                [0,1,1,1,1,1,1,1,1,1,1,1,1,1,0]],'Phone'],
+
+              [[[0,1,0,1,0],
+                [0,0,0,0,0],
+                [0,0,1,0,0],
+                [1,0,0,0,1],
+                [1,1,1,1,1]],'Face']]  #List of all curent picross  [LIST[Picross[rows0[ColumnØ,Column1]],Name]]
+print(Picross_list[0][0])
 Solution_list=[]            #Current playing picross 
 Player_list=[]              #Squares placed by player
 
@@ -26,7 +129,7 @@ def start_player_list(size):
     return P_list
 
 
-
+hideturtle()
 Player_list=start_player_list(size)
 
 
@@ -102,6 +205,7 @@ def square(x,y,size): #make a square of side length = size at x,y cordinate
 
 
 def cross (x,y,size): #draw a cross to show the cursor location on grid proportional to grid size
+    color ('blue')
     penup()
     goto(x,y)
     setheading(135)
@@ -118,23 +222,7 @@ def cross (x,y,size): #draw a cross to show the cursor location on grid proporti
     pendown()
     forward (size*0.8)
 
-    
 
-print("test")
-speed(0)
-""" for x in range (-400,400,150):  
-    for y in range (-400,400,150):  
-        penup()
-        goto(x-5,y)
-        pendown()
-        setheading(0)
-        forward(10)
-        penup()
-        goto(x,y-5)
-        pendown()
-        setheading(90)
-        forward(10)
- """
 
 def square (x,y,size,square_list,xlist,ylist):   #draw a square at coordinate to place a square on the picross 
     penup()
@@ -197,6 +285,147 @@ def show_square (size,square_list):   #draws squares on picross with the player_
     color('black')
    
         
+def Picross_selection(List):
+    selected=0
+    list_size=[]
+    
+
+    for i in range(len(List)):
+        list_size.append(len(List[i][0]))
+
+
+
+    txt=(list_size[0],"X",list_size[0])
+    tracer(0,0)
+    grid(3,3,100)
+    penup()
+    goto(5,275)
+    pendown()
+    write("Picross 1", align="left", font=("Courier", 16, "bold"))
+    penup()
+    goto(5,225)
+    pendown()
+    write(txt, align="left", font=("Courier", 16, "bold"))
+    
+    txt=(list_size[1],"X",list_size[1])
+    penup()
+    goto(105,275)
+    pendown()
+    write("Picross 2", align="left", font=("Courier", 16, "bold"))
+    penup()
+    goto(105,225)
+    pendown()
+    write(txt, align="left", font=("Courier", 16, "bold"))
+
+    txt=(list_size[2],"X",list_size[2])
+    penup()
+    goto(205,275)
+    pendown()
+    write("Picross 3", align="left", font=("Courier", 16, "bold"))
+    penup()
+    goto(205,225)
+    pendown()
+    write(txt, align="left", font=("Courier", 16, "bold"))
+
+    txt=(list_size[3]," X ",list_size[3])
+    penup()
+    goto(5,175)
+    pendown()
+    write("Picross 4", align="left", font=("Courier", 16, "bold"))
+    penup()
+    goto(5,125)
+    pendown()
+    write(txt, align="left", font=("Courier", 16, "bold"))
+
+    txt=(list_size[4]," X ",list_size[4])
+    penup()
+    goto(105,175)
+    pendown()
+    write("Picross 5", align="left", font=("Courier", 16, "bold"))
+    penup()
+    goto(105,125)
+    pendown()
+    write(txt, align="left", font=("Courier", 16, "bold"))
+
+    txt=(list_size[5]," X ",list_size[5])
+    penup()
+    goto(205,175)
+    pendown()
+    write("Picross 6", align="left", font=("Courier", 16, "bold"))
+    penup()
+    goto(205,125)
+    pendown()
+    write(txt, align="left", font=("Courier", 16, "bold"))
+
+    txt=(list_size[6]," X ",list_size[6])
+    penup()
+    goto(5,75)
+    pendown()
+    write("Picross 7", align="left", font=("Courier", 16, "bold"))
+    penup()
+    goto(5,25)
+    pendown()
+    write(txt, align="left", font=("Courier", 16, "bold"))
+
+    txt=(list_size[7]," X ",list_size[7])
+    penup()
+    goto(105,75)
+    pendown()
+    write("Picross 8", align="left", font=("Courier", 16, "bold"))
+    penup()
+    goto(105,25)
+    pendown()
+    write(txt, align="left", font=("Courier", 16, "bold"))
+
+    txt=(list_size[8]," X ",list_size[8])
+    penup()
+    goto(205,75)
+    pendown()
+    write("Picross 9", align="left", font=("Courier", 16, "bold"))
+    penup()
+    goto(2055,25)
+    pendown()
+    write(txt, align="left", font=("Courier", 16, "bold"))
+
+
+    
+    tracer(1,0)
+
+
+    while selected==0:
+        if keyboard.is_pressed('1'):
+            selected=1
+
+        if keyboard.is_pressed('2'):
+            selected=2
+
+        if keyboard.is_pressed('3'):
+            selected=3
+
+        if keyboard.is_pressed('4'):
+            selected=4
+
+        if keyboard.is_pressed('5'):
+            selected=5
+
+        if keyboard.is_pressed('6'):
+            selected=6
+
+        if keyboard.is_pressed('7'):
+            selected=7
+
+        if keyboard.is_pressed('8'):
+            selected=8
+
+        if keyboard.is_pressed('9'):
+            selected=9
+
+
+    return()
+
+        
+
+
 
     
 
@@ -243,7 +472,7 @@ def control (size,square_list):
             choose(size)
             ylistpos-=1
             tracer(1,0)
-            sleep(0.05)
+            sleep(0.1)
             print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('down'):
@@ -257,7 +486,7 @@ def control (size,square_list):
             choose(size)
             ylistpos+=1
             tracer(1,0)
-            sleep(0.05)
+            sleep(0.1)
             print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('right'):
@@ -271,7 +500,7 @@ def control (size,square_list):
             choose(size)
             xlistpos+=1
             tracer(1,0)
-            sleep(0.05)
+            sleep(0.1)
             print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('left'):
@@ -285,7 +514,7 @@ def control (size,square_list):
             choose(size)
             xlistpos-=1
             tracer(1,0)
-            sleep(0.05)
+            sleep(0.1)
             print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('c'):
@@ -298,7 +527,7 @@ def control (size,square_list):
             cross(cursor_row,cursor_column,move)
             choose(size)
             tracer(1,0)
-            sleep(0.05)
+            sleep(0.1)
             print(cursor_column,cursor_row)
 
         
@@ -308,8 +537,7 @@ def control (size,square_list):
         
         
 
-
-
-control(size,Player_list)
+Picross_selection(Picross_list)
+control(size,Player_list)   #launch game
 
         
