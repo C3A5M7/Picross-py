@@ -133,14 +133,6 @@ hideturtle()
 Player_list=start_player_list(size)
 
 
-
-
-
-
-
-
-
-
 def choose (picross_size):
     if picross_size == 5:
         grid(5,5,100)
@@ -386,33 +378,42 @@ def Picross_selection(List):
     while selected==0:
         if keyboard.is_pressed('1'):
             selected=1
+            size=5
 
         if keyboard.is_pressed('2'):
             selected=2
+            size=15
 
         if keyboard.is_pressed('3'):
             selected=3
+            size=10
 
         if keyboard.is_pressed('4'):
             selected=4
+            size=10
 
         if keyboard.is_pressed('5'):
             selected=5
+            size=10
 
         if keyboard.is_pressed('6'):
             selected=6
+            size=10
 
         if keyboard.is_pressed('7'):
             selected=7
+            size=15
 
         if keyboard.is_pressed('8'):
             selected=8
+            size=15
 
         if keyboard.is_pressed('9'):
             selected=9
+            size=5
 
-
-    return()
+    clearscreen()
+    return(selected-1,size)
 
         
 
@@ -422,7 +423,7 @@ def Picross_selection(List):
 
 
 
-def control (size,square_list):
+def control (size,square_list,Solve_list):
 
     if size == 5:   #give the number of px to move to be aligned with the grid and is also used in the arrow size
         move=100
@@ -528,7 +529,7 @@ def control (size,square_list):
         
         
 
-Picross_selection(Picross_list)
-control(size,Player_list)   #launch game
+select,size=Picross_selection(Picross_list)
+control(size,Player_list,Picross_list[select])   #launch game
 
         
