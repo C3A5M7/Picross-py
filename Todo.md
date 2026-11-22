@@ -1,2 +1,6 @@
 - [ ] Invert color for cross on square
 - [ ] Fill cursor
+- [ ] edges cases
+- [ ] add number on rows and columns(down)
+- [ ] add example picross
+- [ ] add time 

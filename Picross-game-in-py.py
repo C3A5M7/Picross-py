@@ -12,7 +12,7 @@ import keyboard
 
 # all need to be 500 by 500 px
 
-size=25
+size=5
 Picross_list=[[],]          #List of all curent picross
 Solution_list=[]            #Current playing picross 
 Player_list=[]              #Squares placed by player
