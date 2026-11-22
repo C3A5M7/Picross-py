@@ -427,11 +427,70 @@ def Picross_selection(List):
 
 
     
-def Numbers(size,selected):
-    pass
+def Numbers(size,selected,List_num):
+    if size == 5:   #give the number of px to move to be aligned with the grid and is also used in the arrow size
+        move=100
+    if size == 10:
+        move=50
+    if size == 15:
+        move=33
+    if size == 20:
+        move=25
+    if size == 25:
+        move=20
+
+    Current_picross=List_num[0][selected]
+    
+    cursor_row=move/2-move           #set the starting position of the arrows
+    cursor_column=move/2+(move*size)
+    cross(cursor_row,cursor_column,move)
+    for i in range (len(Current_picross[0])):
+        penup()
+        goto(cursor_row,cursor_column)
+        print(cursor_row,cursor_column)
+        pendown()
+        write(Current_picross[0][i], align="left", font=("Courier", 16, "bold"))
+        print(Current_picross[0][i])
+        if type(Current_picross[0][i]) is list:
+            if len(Current_picross[0][i]) > 1:
+                for a in range (1,len(Current_picross[0][i]-1)):
+                    cursor_column=cursor_column+15
+                    penup()
+                    goto(cursor_row,cursor_column)
+                    pendown()
+                    write(Current_picross[0][i][a], align="left", font=("Courier", 16, "bold"))
+        cursor_column=move/2+(move*size) 
+        penup()
+        cursor_row=cursor_row+move
 
 
-def control (size,square_list,Solve_list):
+    cursor_row=move/2-move           #reset position
+    cursor_column=move/2+(move*size)
+
+    for i in range (len(Current_picross[1])):
+        penup()
+        goto(cursor_row,cursor_column)
+        pendown()
+        write(Current_picross[1][i], align="left", font=("Courier", 16, "bold"))
+        if type(Current_picross[1][i]) is list:
+            if len(Current_picross[1][i]) > 1:
+                for a in range (1,len(Current_picross[0][i]-1)):
+                    cursor_row=cursor_row+15
+                    penup()
+                    goto(cursor_row,cursor_column)
+                    pendown()
+                    write(Current_picross[0][i][a], align="left", font=("Courier", 16, "bold"))
+        cursor_row=move/2-move 
+        penup()
+        cursor_column=cursor_column+move
+
+
+    
+
+    
+
+
+def control (size,square_list,Solve_list,select,Num_list):
 
     if size == 5:   #give the number of px to move to be aligned with the grid and is also used in the arrow size
         move=100
@@ -473,7 +532,8 @@ def control (size,square_list,Solve_list):
             ylistpos-=1
             tracer(1,0)
             sleep(0.1)
-            print(cursor_column,cursor_row)
+            #print(cursor_column,cursor_row)
+            Numbers(size,select,Num_list)
 
         elif keyboard.is_pressed('down'):
             cursor_column=cursor_column-move
@@ -487,7 +547,7 @@ def control (size,square_list,Solve_list):
             ylistpos+=1
             tracer(1,0)
             sleep(0.1)
-            print(cursor_column,cursor_row)
+            #print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('right'):
             cursor_row=cursor_row+move
@@ -501,7 +561,7 @@ def control (size,square_list,Solve_list):
             xlistpos+=1
             tracer(1,0)
             sleep(0.1)
-            print(cursor_column,cursor_row)
+            #print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('left'):
             cursor_row=cursor_row-move
@@ -515,7 +575,7 @@ def control (size,square_list,Solve_list):
             xlistpos-=1
             tracer(1,0)
             sleep(0.1)
-            print(cursor_column,cursor_row)
+            #print(cursor_column,cursor_row)
 
         elif keyboard.is_pressed('c'):
             clearscreen()
@@ -528,10 +588,10 @@ def control (size,square_list,Solve_list):
             choose(size)
             tracer(1,0)
             sleep(0.1)
-            print(cursor_column,cursor_row)
+            #print(cursor_column,cursor_row)
 
         
-        print(xlistpos,ylistpos)
+        #print(xlistpos,ylistpos)
         sleep(0.01)
 
         
@@ -550,6 +610,6 @@ def start_player_list(size):
 
 Player_list=start_player_list(size)
 
-control(size,Player_list,Picross_list[select])   #launch game
+control(size,Player_list,Picross_list[select],select,Numbers_list)   #launch game
 
         
