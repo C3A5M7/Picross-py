@@ -115,7 +115,7 @@ Picross_list=[[[[1,0,1,0,1],
                 [0,0,0,0,0],
                 [0,0,1,0,0],
                 [1,0,0,0,1],
-                [1,1,1,1,1]],'Face']]  #List of all curent picross  [LIST[Picross[rows0[ColumnØ,Column1]],Name]]
+                [1,1,1,1,1]],'Face']]  #List of all curent picross  [LIST[Picross[rows0[Column0,Column1,ect]],Name]]
 print(Picross_list[0][0])
 Solution_list=[]            #Current playing picross 
 Player_list=[]              #Squares placed by player
@@ -295,7 +295,6 @@ def Picross_selection(List):
 
 
 
-    txt=(list_size[0],"X",list_size[0])
     tracer(0,0)
     grid(3,3,100)
     penup()
@@ -305,9 +304,8 @@ def Picross_selection(List):
     penup()
     goto(5,225)
     pendown()
-    write(txt, align="left", font=("Courier", 16, "bold"))
+    write('5X5', align="left", font=("Courier", 16, "bold"))
     
-    txt=(list_size[1],"X",list_size[1])
     penup()
     goto(105,275)
     pendown()
@@ -315,9 +313,8 @@ def Picross_selection(List):
     penup()
     goto(105,225)
     pendown()
-    write(txt, align="left", font=("Courier", 16, "bold"))
+    write('15X15', align="left", font=("Courier", 16, "bold"))
 
-    txt=(list_size[2],"X",list_size[2])
     penup()
     goto(205,275)
     pendown()
@@ -325,9 +322,8 @@ def Picross_selection(List):
     penup()
     goto(205,225)
     pendown()
-    write(txt, align="left", font=("Courier", 16, "bold"))
+    write('10X10', align="left", font=("Courier", 16, "bold"))
 
-    txt=(list_size[3]," X ",list_size[3])
     penup()
     goto(5,175)
     pendown()
@@ -335,9 +331,8 @@ def Picross_selection(List):
     penup()
     goto(5,125)
     pendown()
-    write(txt, align="left", font=("Courier", 16, "bold"))
+    write('10X10', align="left", font=("Courier", 16, "bold"))
 
-    txt=(list_size[4]," X ",list_size[4])
     penup()
     goto(105,175)
     pendown()
@@ -345,9 +340,8 @@ def Picross_selection(List):
     penup()
     goto(105,125)
     pendown()
-    write(txt, align="left", font=("Courier", 16, "bold"))
+    write('10X10', align="left", font=("Courier", 16, "bold"))
 
-    txt=(list_size[5]," X ",list_size[5])
     penup()
     goto(205,175)
     pendown()
@@ -355,9 +349,8 @@ def Picross_selection(List):
     penup()
     goto(205,125)
     pendown()
-    write(txt, align="left", font=("Courier", 16, "bold"))
+    write('10X10', align="left", font=("Courier", 16, "bold"))
 
-    txt=(list_size[6]," X ",list_size[6])
     penup()
     goto(5,75)
     pendown()
@@ -365,9 +358,8 @@ def Picross_selection(List):
     penup()
     goto(5,25)
     pendown()
-    write(txt, align="left", font=("Courier", 16, "bold"))
+    write('15X15', align="left", font=("Courier", 16, "bold"))
 
-    txt=(list_size[7]," X ",list_size[7])
     penup()
     goto(105,75)
     pendown()
@@ -375,17 +367,16 @@ def Picross_selection(List):
     penup()
     goto(105,25)
     pendown()
-    write(txt, align="left", font=("Courier", 16, "bold"))
+    write('15X15', align="left", font=("Courier", 16, "bold"))
 
-    txt=(list_size[8]," X ",list_size[8])
     penup()
     goto(205,75)
     pendown()
     write("Picross 9", align="left", font=("Courier", 16, "bold"))
     penup()
-    goto(2055,25)
+    goto(205,25)
     pendown()
-    write(txt, align="left", font=("Courier", 16, "bold"))
+    write('5X5', align="left", font=("Courier", 16, "bold"))
 
 
     
