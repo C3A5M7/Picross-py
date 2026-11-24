@@ -3,4 +3,4 @@
 - [X] add number on rows and columns(down)
 - [X] add example picross
 - [ ] add time 
-- [ ] need to flip number on the from up to bottom in the vertical bars
+- [X] need to flip number on the from up to bottom in the vertical bars

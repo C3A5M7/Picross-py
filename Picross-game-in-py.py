@@ -12,6 +12,9 @@ import keyboard
 
 # all need to be 500 by 500 px
 
+screen = Screen()
+screen.setup(width=1100, height=1100)
+
 
 Picross_list=[[[[1,0,1,0,1],
                 [1,1,1,1,1],
@@ -479,7 +482,7 @@ def Numbers(size,selected,List_num):
             goto((move/2+(move*a)),(-30+(-20*len(Current_picross[1][a])))+b*20)
             print(Current_picross[1][a][b])             #replace with turtle text after this is just a temp bc list of list make me lose my mind
             pendown()
-            write(Current_picross[1][a][b], align="left", font=("Courier", 16, "bold"))
+            write(Current_picross[1][a][(len(Current_picross[1][a])-1)-b], align="left", font=("Courier", 16, "bold"))
                     
         
 
