@@ -447,14 +447,40 @@ def Numbers(size,selected,List_num):
 
     Current_picross=List_num[selected]  # current list --->. [ [[N,N] , [N] , [N,N,N,N] ]   ,   [[N,N] , [N] , [N,N,N,N] ]      ]
 
+    # starting position for horizontal text y=-30 and add -20 per supplementary lines and x is at first move/2 and + move * actual columns
+
+    # starting position for Vertical text x=-30 and add -20 per supplementary lines and y is at first move/2 and + move * actual rows
+
+
+
+    
+    goto(-30,0)
+    write('.', align="left", font=("Courier", 16, "bold"))
+
+    
+
+
+    
+
+
     for a in range (len(Current_picross[0])):
         for b in range (len(Current_picross[0][a])):
+            penup()
+            goto((-30+(-20*len(Current_picross[0][a])))+b*20,500-(move/2+(move*a)))
             print(Current_picross[0][a][b])             #replace with turtle text after this is just a temp bc list of list make me lose my mind
+            pendown()
+            write(Current_picross[0][a][b], align="left", font=("Courier", 16, "bold"))
+
 
     print("______-----_____")
     for a in range (len(Current_picross[1])):
          for b in range (len(Current_picross[1][a])):
-            print(Current_picross[1][a][b])        
+            penup()
+            goto((move/2+(move*a)),(-30+(-20*len(Current_picross[1][a])))+b*20)
+            print(Current_picross[1][a][b])             #replace with turtle text after this is just a temp bc list of list make me lose my mind
+            pendown()
+            write(Current_picross[1][a][b], align="left", font=("Courier", 16, "bold"))
+                    
         
 
 
