@@ -128,6 +128,12 @@ Numbers_list=[[[[1,1,1],[5],[3],[5],[5]],[[2,2],[4],[5],[4],[2,2]]],
               [[[0],[7],[3,4],[2,5],[1,6],[15],[1,1],[1,1,2,2],[12],[11],[1,5],[1,6],[2,7],[11],[0]],[[2],[3,1,3],[2,1,2,2],[1,1,2,1],[2,1,3,1],[1,1,2,1],[1,1,2,1],[1,1,2,2],[1,2,3,3],[5,7],[5,6],[4,6],[4,7],[3,2,3],[2]]],
               [[[9],[13],[15],[5,5],[4,1,1,4],[4,1,1,4],[7],[9],[3,3],[3,3,3],[3,3,3],[4,3,4],[5,5],[13],[13]],[[4],[5,4],[5,6],[6,8],[4,9],[3,5,3],[3,2,3,2],[3,2,3,2],[3,2,3,2],[3,5,3],[4,9],[6,8],[5,6],[5,4],[4]]],
               [[[1,1],[0],[1],[1,1],[5]],[[2],[1,1],[1,1],[1,1],[2]]]]         #[Picross[[Rows1],[Rows2]],[Columns1]]]
+
+
+
+print(Numbers_list[0])
+
+
 def start_player_list(size):
     P_list=[]
     for i in range (size):
@@ -439,9 +445,32 @@ def Numbers(size,selected,List_num):
     if size == 25:
         move=20
 
-    Current_picross=List_num[0][selected]
+    Current_picross=List_num[selected]  # current list --->. [ [[N,N] , [N] , [N,N,N,N] ]   ,   [[N,N] , [N] , [N,N,N,N] ]      ]
+
+    for a in range (len(Current_picross[0])):
+        for b in range (len(Current_picross[0][a])):
+            print(Current_picross[0][a][b])             #replace with turtle text after this is just a temp bc list of list make me lose my mind
+
+    print("______-----_____")
+    for a in range (len(Current_picross[1])):
+         for b in range (len(Current_picross[1][a])):
+            print(Current_picross[1][a][b])        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-    cursor_row=move/2-move           #set the starting position of the arrows
+    """ cursor_row=move/2-move           #set the starting position of the arrows
     cursor_column=move/2+(move*size)
     cross(cursor_row,cursor_column,move)
     for i in range (len(Current_picross[0])):
@@ -482,7 +511,7 @@ def Numbers(size,selected,List_num):
                     write(Current_picross[0][i][a], align="left", font=("Courier", 16, "bold"))
         cursor_row=move/2-move 
         penup()
-        cursor_column=cursor_column+move
+        cursor_column=cursor_column+move """
 
 
     
