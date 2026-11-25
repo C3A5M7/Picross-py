@@ -489,14 +489,19 @@ def control (size,square_list,Solve_list,select,Num_list):
 
     if size == 5:   #give the number of px to move to be aligned with the grid and is also used in the arrow size
         move=100
+        frame_limit=20
     if size == 10:
         move=50
+        frame_limit=10
     if size == 15:
         move=33
+        frame_limit=5
     if size == 20:
         move=25
+        frame_limit=3
     if size == 25:
         move=20
+        frame_limit=2
 
     cursor_row=move/2           #set the starting position of the arrows
     cursor_column=move/2+(move*size)-move
@@ -507,12 +512,13 @@ def control (size,square_list,Solve_list,select,Num_list):
     Victory=0
 
     Frame_counter=0         #something to count the number of drawed frame since last clear (this help to be less flashing)
+    
 
     tracer(0,0)         #show the screen
     choose(size)
     Numbers(size,select,Num_list)
-    arrow(cursor_row,500,'down',move)
-    arrow(0,cursor_column,'right',move)
+    #arrow(cursor_row,500,'down',move)
+    #arrow(0,cursor_column,'right',move)
     cross(cursor_row,cursor_column,move)
     tracer(1,0)
 
@@ -522,12 +528,12 @@ def control (size,square_list,Solve_list,select,Num_list):
                 cursor_column=move/2
                 #clearscreen()
                 tracer(0,0)
-                arrow(cursor_row,500,'down',move)
-                arrow(0,cursor_column,'right',move)
+                #arrow(cursor_row,500,'down',move)
+                #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
-                Numbers(size,select,Num_list)
+                #Numbers(size,select,Num_list)
                 ylistpos=size-1
                 Frame_counter+=1
                 tracer(1,0)
@@ -538,12 +544,12 @@ def control (size,square_list,Solve_list,select,Num_list):
                 cursor_column=cursor_column+move
                 #clearscreen()
                 tracer(0,0)
-                arrow(cursor_row,500,'down',move)
-                arrow(0,cursor_column,'right',move)
+                #arrow(cursor_row,500,'down',move)
+                #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
-                Numbers(size,select,Num_list)
+                #Numbers(size,select,Num_list)
                 ylistpos-=1
                 Frame_counter+=1
                 tracer(1,0)
@@ -556,12 +562,12 @@ def control (size,square_list,Solve_list,select,Num_list):
                 cursor_column=move/2+(move*size)-move
                 #clearscreen()
                 tracer(0,0)
-                arrow(cursor_row,500,'down',move)
-                arrow(0,cursor_column,'right',move)
+                #arrow(cursor_row,500,'down',move)
+                #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
-                Numbers(size,select,Num_list)
+                #Numbers(size,select,Num_list)
                 ylistpos=0
                 Frame_counter+=1
                 tracer(1,0)
@@ -572,12 +578,12 @@ def control (size,square_list,Solve_list,select,Num_list):
                 cursor_column=cursor_column-move
                 #clearscreen()
                 tracer(0,0)
-                arrow(cursor_row,500,'down',move)
-                arrow(0,cursor_column,'right',move)
+                #arrow(cursor_row,500,'down',move)
+                #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
-                Numbers(size,select,Num_list)
+                #Numbers(size,select,Num_list)
                 ylistpos+=1
                 Frame_counter+=1
                 tracer(1,0)
@@ -588,12 +594,12 @@ def control (size,square_list,Solve_list,select,Num_list):
                 cursor_row=move/2
                 #clearscreen()
                 tracer(0,0)
-                arrow(cursor_row,500,'down',move)
-                arrow(0,cursor_column,'right',move)
+                #arrow(cursor_row,500,'down',move)
+                #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
-                Numbers(size,select,Num_list)
+                #Numbers(size,select,Num_list)
                 xlistpos=0
                 Frame_counter+=1
                 tracer(1,0)
@@ -604,12 +610,12 @@ def control (size,square_list,Solve_list,select,Num_list):
                 cursor_row=cursor_row+move
                 #clearscreen()
                 tracer(0,0)
-                arrow(cursor_row,500,'down',move)
-                arrow(0,cursor_column,'right',move)
+                #arrow(cursor_row,500,'down',move)
+                #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
-                Numbers(size,select,Num_list)
+                #Numbers(size,select,Num_list)
                 xlistpos+=1
                 Frame_counter+=1
                 tracer(1,0)
@@ -621,12 +627,12 @@ def control (size,square_list,Solve_list,select,Num_list):
                 cursor_row=move/2+(move*size)-move
                 #clearscreen()
                 tracer(0,0)
-                arrow(cursor_row,500,'down',move)
-                arrow(0,cursor_column,'right',move)
+                #arrow(cursor_row,500,'down',move)
+                #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
-                Numbers(size,select,Num_list)
+                #Numbers(size,select,Num_list)
                 xlistpos=size-1
                 Frame_counter+=1
                 tracer(1,0)
@@ -637,12 +643,12 @@ def control (size,square_list,Solve_list,select,Num_list):
                 cursor_row=cursor_row-move
                 #clearscreen()
                 tracer(0,0)
-                arrow(cursor_row,500,'down',move)
-                arrow(0,cursor_column,'right',move)
+                #arrow(cursor_row,500,'down',move)
+                #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
-                Numbers(size,select,Num_list)
+                #Numbers(size,select,Num_list)
                 xlistpos-=1
                 Frame_counter+=1
                 tracer(1,0)
@@ -652,8 +658,8 @@ def control (size,square_list,Solve_list,select,Num_list):
         elif keyboard.is_pressed('c'):
             #clearscreen()
             tracer(0,0)
-            arrow(cursor_row,500,'down',move)
-            arrow(0,cursor_column,'right',move)
+            #arrow(cursor_row,500,'down',move)
+            #arrow(0,cursor_column,'right',move)
             square(cursor_row,cursor_column,move,square_list,xlistpos,ylistpos)
             show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
@@ -667,7 +673,7 @@ def control (size,square_list,Solve_list,select,Num_list):
             sleep(0.1)
 
 
-        if Frame_counter > 15 :
+        if Frame_counter > frame_limit :
             clearscreen()
             tracer(0,0)
             show_square(size,square_list)
