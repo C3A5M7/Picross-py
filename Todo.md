@@ -1,5 +1,5 @@
 - [ ] Fill cursor
-- [ ] edges cases
+- [X] edges cases
 - [X] add number on rows and columns(down)
 - [X] add example picross
 - [ ] add time 

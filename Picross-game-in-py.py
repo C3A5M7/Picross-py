@@ -509,6 +509,7 @@ def control (size,square_list,Solve_list,select,Num_list):
 
     tracer(0,0)         #show the screen
     choose(size)
+    Numbers(size,select,Num_list)
     arrow(cursor_row,500,'down',move)
     arrow(0,cursor_column,'right',move)
     cross(cursor_row,cursor_column,move)
@@ -516,65 +517,128 @@ def control (size,square_list,Solve_list,select,Num_list):
 
     while True:
         if keyboard.is_pressed('up'):
-            cursor_column=cursor_column+move
-            clearscreen()
-            tracer(0,0)
-            arrow(cursor_row,500,'down',move)
-            arrow(0,cursor_column,'right',move)
-            show_square(size,square_list)
-            cross(cursor_row,cursor_column,move)
-            choose(size)
-            Numbers(size,select,Num_list)
-            ylistpos-=1
-            tracer(1,0)
-            sleep(0.1)
-            #print(cursor_column,cursor_row)
+            if (cursor_column/move)+0.5 == size :
+                cursor_column=move/2
+                clearscreen()
+                tracer(0,0)
+                arrow(cursor_row,500,'down',move)
+                arrow(0,cursor_column,'right',move)
+                show_square(size,square_list)
+                cross(cursor_row,cursor_column,move)
+                choose(size)
+                Numbers(size,select,Num_list)
+                ylistpos=size-1
+                tracer(1,0)
+                sleep(0.1)
+
+
+            else:
+                cursor_column=cursor_column+move
+                clearscreen()
+                tracer(0,0)
+                arrow(cursor_row,500,'down',move)
+                arrow(0,cursor_column,'right',move)
+                show_square(size,square_list)
+                cross(cursor_row,cursor_column,move)
+                choose(size)
+                Numbers(size,select,Num_list)
+                ylistpos-=1
+                tracer(1,0)
+                sleep(0.1)
+
             
 
         elif keyboard.is_pressed('down'):
-            cursor_column=cursor_column-move
-            clearscreen()
-            tracer(0,0)
-            arrow(cursor_row,500,'down',move)
-            arrow(0,cursor_column,'right',move)
-            show_square(size,square_list)
-            cross(cursor_row,cursor_column,move)
-            choose(size)
-            Numbers(size,select,Num_list)
-            ylistpos+=1
-            tracer(1,0)
-            sleep(0.1)
-            #print(cursor_column,cursor_row)
+            if (cursor_column/move)+0.5 == 1 :
+                cursor_column=move/2+(move*size)-move
+                clearscreen()
+                tracer(0,0)
+                arrow(cursor_row,500,'down',move)
+                arrow(0,cursor_column,'right',move)
+                show_square(size,square_list)
+                cross(cursor_row,cursor_column,move)
+                choose(size)
+                Numbers(size,select,Num_list)
+                ylistpos=0
+                tracer(1,0)
+                sleep(0.1)
+
+            else:
+
+                cursor_column=cursor_column-move
+                clearscreen()
+                tracer(0,0)
+                arrow(cursor_row,500,'down',move)
+                arrow(0,cursor_column,'right',move)
+                show_square(size,square_list)
+                cross(cursor_row,cursor_column,move)
+                choose(size)
+                Numbers(size,select,Num_list)
+                ylistpos+=1
+                tracer(1,0)
+                sleep(0.1)
 
         elif keyboard.is_pressed('right'):
-            cursor_row=cursor_row+move
-            clearscreen()
-            tracer(0,0)
-            arrow(cursor_row,500,'down',move)
-            arrow(0,cursor_column,'right',move)
-            show_square(size,square_list)
-            cross(cursor_row,cursor_column,move)
-            choose(size)
-            Numbers(size,select,Num_list)
-            xlistpos+=1
-            tracer(1,0)
-            sleep(0.1)
-            #print(cursor_column,cursor_row)
+            if (cursor_row/move)+0.5 == size :
+                cursor_row=move/2
+                clearscreen()
+                tracer(0,0)
+                arrow(cursor_row,500,'down',move)
+                arrow(0,cursor_column,'right',move)
+                show_square(size,square_list)
+                cross(cursor_row,cursor_column,move)
+                choose(size)
+                Numbers(size,select,Num_list)
+                xlistpos=0
+                tracer(1,0)
+                sleep(0.1)
+
+
+            else:
+                cursor_row=cursor_row+move
+                clearscreen()
+                tracer(0,0)
+                arrow(cursor_row,500,'down',move)
+                arrow(0,cursor_column,'right',move)
+                show_square(size,square_list)
+                cross(cursor_row,cursor_column,move)
+                choose(size)
+                Numbers(size,select,Num_list)
+                xlistpos+=1
+                tracer(1,0)
+                sleep(0.1)
 
         elif keyboard.is_pressed('left'):
-            cursor_row=cursor_row-move
-            clearscreen()
-            tracer(0,0)
-            arrow(cursor_row,500,'down',move)
-            arrow(0,cursor_column,'right',move)
-            show_square(size,square_list)
-            cross(cursor_row,cursor_column,move)
-            choose(size)
-            Numbers(size,select,Num_list)
-            xlistpos-=1
-            tracer(1,0)
-            sleep(0.1)
-            #print(cursor_column,cursor_row)
+            if (cursor_row/move)+0.5 == 1 :
+
+                cursor_row=move/2+(move*size)-move
+                clearscreen()
+                tracer(0,0)
+                arrow(cursor_row,500,'down',move)
+                arrow(0,cursor_column,'right',move)
+                show_square(size,square_list)
+                cross(cursor_row,cursor_column,move)
+                choose(size)
+                Numbers(size,select,Num_list)
+                xlistpos=size-1
+                tracer(1,0)
+                sleep(0.1)
+
+            else:
+
+                cursor_row=cursor_row-move
+                clearscreen()
+                tracer(0,0)
+                arrow(cursor_row,500,'down',move)
+                arrow(0,cursor_column,'right',move)
+                show_square(size,square_list)
+                cross(cursor_row,cursor_column,move)
+                choose(size)
+                Numbers(size,select,Num_list)
+                xlistpos-=1
+                tracer(1,0)
+                sleep(0.1)
+
 
         elif keyboard.is_pressed('c'):
             clearscreen()
