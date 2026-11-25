@@ -454,12 +454,6 @@ def Numbers(size,selected,List_num):
 
     # starting position for Vertical text x=-30 and add -20 per supplementary lines and y is at first move/2 and + move * actual rows
 
-
-
-    
-    goto(-30,0)
-    write('.', align="left", font=("Courier", 16, "bold"))
-
     
 
 
@@ -469,78 +463,21 @@ def Numbers(size,selected,List_num):
     for a in range (len(Current_picross[0])):
         for b in range (len(Current_picross[0][a])):
             penup()
-            goto((-30+(-20*len(Current_picross[0][a])))+b*20,500-(move/2+(move*a)))
-            print(Current_picross[0][a][b])             #replace with turtle text after this is just a temp bc list of list make me lose my mind
+            goto((-30+(-20*len(Current_picross[0][a])))+b*20,488-(move/2+(move*a)))
             pendown()
-            write(Current_picross[0][a][b], align="left", font=("Courier", 16, "bold"))
+            write(Current_picross[0][a][b], align="center", font=("Courier", 16, "bold"))
 
 
-    print("______-----_____")
     for a in range (len(Current_picross[1])):
          for b in range (len(Current_picross[1][a])):
             penup()
-            goto((move/2+(move*a)),(-30+(-20*len(Current_picross[1][a])))+b*20)
-            print(Current_picross[1][a][b])             #replace with turtle text after this is just a temp bc list of list make me lose my mind
+            goto((move/2+(move*a))+0,(-30+(-20*len(Current_picross[1][a])))+b*20)
             pendown()
-            write(Current_picross[1][a][(len(Current_picross[1][a])-1)-b], align="left", font=("Courier", 16, "bold"))
+            write(Current_picross[1][a][(len(Current_picross[1][a])-1)-b], align="center", font=("Courier", 16, "bold"))
                     
         
 
 
-
-
-
-
-
-
-
-
-
-
-
-    
-    """ cursor_row=move/2-move           #set the starting position of the arrows
-    cursor_column=move/2+(move*size)
-    cross(cursor_row,cursor_column,move)
-    for i in range (len(Current_picross[0])):
-        penup()
-        goto(cursor_row,cursor_column)
-        print(cursor_row,cursor_column)
-        pendown()
-        write(Current_picross[0][i], align="left", font=("Courier", 16, "bold"))
-        print(Current_picross[0][i])
-        if type(Current_picross[0][i]) is list:
-            if len(Current_picross[0][i]) > 1:
-                for a in range (1,len(Current_picross[0][i]-1)):
-                    cursor_column=cursor_column+15
-                    penup()
-                    goto(cursor_row,cursor_column)
-                    pendown()
-                    write(Current_picross[0][i][a], align="left", font=("Courier", 16, "bold"))
-        cursor_column=move/2+(move*size) 
-        penup()
-        cursor_row=cursor_row+move
-
-
-    cursor_row=move/2-move           #reset position
-    cursor_column=move/2+(move*size)
-
-    for i in range (len(Current_picross[1])):
-        penup()
-        goto(cursor_row,cursor_column)
-        pendown()
-        write(Current_picross[1][i], align="left", font=("Courier", 16, "bold"))
-        if type(Current_picross[1][i]) is list:
-            if len(Current_picross[1][i]) > 1:
-                for a in range (1,len(Current_picross[0][i]-1)):
-                    cursor_row=cursor_row+15
-                    penup()
-                    goto(cursor_row,cursor_column)
-                    pendown()
-                    write(Current_picross[0][i][a], align="left", font=("Courier", 16, "bold"))
-        cursor_row=move/2-move 
-        penup()
-        cursor_column=cursor_column+move """
 
 
     
@@ -587,11 +524,12 @@ def control (size,square_list,Solve_list,select,Num_list):
             show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
             choose(size)
+            Numbers(size,select,Num_list)
             ylistpos-=1
             tracer(1,0)
             sleep(0.1)
             #print(cursor_column,cursor_row)
-            Numbers(size,select,Num_list)
+            
 
         elif keyboard.is_pressed('down'):
             cursor_column=cursor_column-move
@@ -602,6 +540,7 @@ def control (size,square_list,Solve_list,select,Num_list):
             show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
             choose(size)
+            Numbers(size,select,Num_list)
             ylistpos+=1
             tracer(1,0)
             sleep(0.1)
@@ -616,6 +555,7 @@ def control (size,square_list,Solve_list,select,Num_list):
             show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
             choose(size)
+            Numbers(size,select,Num_list)
             xlistpos+=1
             tracer(1,0)
             sleep(0.1)
@@ -630,6 +570,7 @@ def control (size,square_list,Solve_list,select,Num_list):
             show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
             choose(size)
+            Numbers(size,select,Num_list)
             xlistpos-=1
             tracer(1,0)
             sleep(0.1)
@@ -644,6 +585,7 @@ def control (size,square_list,Solve_list,select,Num_list):
             show_square(size,square_list)
             cross(cursor_row,cursor_column,move)
             choose(size)
+            Numbers(size,select,Num_list)
             tracer(1,0)
             sleep(0.1)
             #print(cursor_column,cursor_row)
