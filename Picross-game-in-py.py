@@ -19,7 +19,7 @@ screen.setup(width=1100, height=1100)
 Picross_list=[[[[1,0,1,0,1],
                 [1,1,1,1,1],
                 [0,1,1,1,0],
-                [0,1,1,1,0],
+                [1,1,1,1,1],
                 [1,1,1,1,1]],'Castle'],
                 
               [[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -504,6 +504,7 @@ def control (size,square_list,Solve_list,select,Num_list):
     xlistpos=0      #position in the player list
     ylistpos=0
 
+    Victory=0
 
 
 
@@ -515,7 +516,7 @@ def control (size,square_list,Solve_list,select,Num_list):
     cross(cursor_row,cursor_column,move)
     tracer(1,0)
 
-    while True:
+    while Victory==0:
         if keyboard.is_pressed('up'):
             if (cursor_column/move)+0.5 == size :
                 cursor_column=move/2
@@ -650,13 +651,64 @@ def control (size,square_list,Solve_list,select,Num_list):
             cross(cursor_row,cursor_column,move)
             choose(size)
             Numbers(size,select,Num_list)
+
+            if square_list == Solve_list[0]:
+                Victory=1
             tracer(1,0)
             sleep(0.1)
             print(square_list)
+            print(Solve_list[0])
+            print()
 
         
         #print(xlistpos,ylistpos)
         sleep(0.01)
+
+    tracer(0,0)
+    setheading(45)
+    for i in range(2000):
+        penup()
+        goto(1000-i*4,-1000)
+        pendown()
+        forward(3000)
+    
+    setheading(0)
+    penup()
+    goto(-400,400)
+    color('white')
+    begin_fill()
+    pendown()
+    for i in range(4):
+        forward(800)
+        right(90)
+    end_fill()
+    penup()
+    color('black')
+    goto(0,100)
+    pendown()
+    write('You win', align="center", font=("Courier", 16, "bold"))
+    penup()
+    goto(0,-50)
+    pendown()
+    write('Picross name :', align="center", font=("Courier", 16, "bold"))
+    penup()
+    goto(0,-100)
+    pendown()
+    write(Solve_list[1], align="center", font=("Courier", 16, "bold"))
+    penup()
+    goto(0,-400)
+    pendown()
+    write('Press c to exit', align="center", font=("Courier", 16, "bold"))
+    hideturtle()
+    tracer(1,0)
+
+
+    exit=0
+
+    while exit==0:
+        if keyboard.is_pressed('c'):
+            exit=1
+
 
         
 size=5        
