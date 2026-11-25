@@ -163,20 +163,31 @@ def choose (picross_size):
 
 def grid(rows,columns,size) : #set a grid of rows and columns with square 
     setheading(90)
-    color('black')
+    color('grey')
     for a in range (columns+1):
+        if a+1 == 6 or a+1 == 11 or a+1 == 16 or a+1 == 21 or a+1 == 26 :
+            pensize(2)
+            color('lawngreen')
         penup()
         goto(a*size,0)
         pendown()
         forward(size*(rows))
         pendown()
+        color('grey')
+        pensize(1)
 
     setheading(0)
     for b in range (rows+1):
+        if b+1 == 6 or b+1 == 11 or b+1 == 16 or b+1 == 21 or b+1 == 26 :
+            color('lawngreen')
+            pensize(2)
         penup()
         goto(0,b*size)
         pendown()
         forward(size*(columns))
+        color('grey')
+        pensize(1)
+    color('black')
 
 def arrow(x,y,orientation,size):   #make an arrow of size of the block ex:  for box of 50x50px. arrow is 50 in size
     size=size/4
@@ -213,7 +224,8 @@ def square(x,y,size): #make a square of side length = size at x,y cordinate
 
 
 def cross (x,y,size): #draw a cross to show the cursor location on grid proportional to grid size
-    color ('blue')
+    pensize(2)
+    color ('grey')
     penup()
     goto(x,y)
     setheading(135)
@@ -229,6 +241,8 @@ def cross (x,y,size): #draw a cross to show the cursor location on grid proporti
     left(180)
     pendown()
     forward (size*0.8)
+    color('black')
+    pensize(1)
 
 
 

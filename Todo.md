@@ -7,3 +7,4 @@
 - [ ] add anti-cursor (area where you can't place boxes)
 - [X] add Victory screen
 - [ ] add time to Victory screen
+- [ ] limit green bar on edges
