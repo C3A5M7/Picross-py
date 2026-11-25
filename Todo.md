@@ -4,3 +4,4 @@
 - [X] add example picross
 - [ ] add time 
 - [X] need to flip number on the from up to bottom in the vertical bars
+- [ ] add anti-cursor (area where you can't place boxes)
