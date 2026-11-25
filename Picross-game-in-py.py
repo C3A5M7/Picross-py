@@ -243,12 +243,12 @@ def square (x,y,size,square_list,xlist,ylist):   #draw a square at coordinate to
         left(90)
     end_fill()
     penup()
-    if square_list[xlist][ylist]==1:
-        square_list[xlist][ylist]=0
+    if square_list[ylist][xlist]==1:
+        square_list[ylist][xlist]=0
 
 
     else:
-        square_list[xlist][ylist]=1
+        square_list[ylist][xlist]=1
 
     
         
@@ -270,7 +270,7 @@ def show_square (size,square_list):   #draws squares on picross with the player_
     setheading(0)
     for y in range (len(square_list[-1])):
         for x in range (len(square_list[-1])):
-            if square_list[x][y]==1:
+            if square_list[y][x]==1:
                 color('black')
                 goto(x*mult,-y*mult+((size-1)*mult))
                 pendown()
@@ -652,7 +652,7 @@ def control (size,square_list,Solve_list,select,Num_list):
             Numbers(size,select,Num_list)
             tracer(1,0)
             sleep(0.1)
-            #print(cursor_column,cursor_row)
+            print(square_list)
 
         
         #print(xlistpos,ylistpos)
