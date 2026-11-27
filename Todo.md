@@ -7,3 +7,4 @@
 - [X] add Victory screen
 - [ ] add time to Victory screen
 - [X] limit color bar on edges
+- [ ] add possibility to restart the game 
