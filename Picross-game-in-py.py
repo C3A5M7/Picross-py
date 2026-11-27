@@ -114,11 +114,11 @@ Picross_list=[[[[1,0,1,0,1],
                 [0,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
                 [0,1,1,1,1,1,1,1,1,1,1,1,1,1,0]],'Phone'],
 
-              [[[0,1,0,1,0],
-                [0,0,0,0,0],
+              [[[0,1,1,1,1],
+                [0,0,1,0,1],
+                [0,0,1,1,1],
                 [0,0,1,0,0],
-                [1,0,0,0,1],
-                [1,1,1,1,1]],'Face']]  #List of all curent picross  [LIST[Picross[rows0[Column0,Column1,ect]],Name]]
+                [0,1,1,1,0]],'P like picross ;)']]  #List of all curent picross  [LIST[Picross[rows0[Column0,Column1,ect]],Name]]
 print(Picross_list[0][0])
 Solution_list=[]            #Current playing picross 
 Player_list=[]              #Squares placed by player
@@ -130,7 +130,7 @@ Numbers_list=[[[[1,1,1],[5],[3],[5],[5]],[[2,2],[4],[5],[4],[2,2]]],
               [[[2],[4],[6],[8],[10],[10],[10],[2,2,2],[4],[6]],[[3],[5],[6,1],[6,2],[10],[10],[6,2],[6,1],[5],[3]]],
               [[[0],[7],[3,4],[2,5],[1,6],[15],[1,1],[1,1,2,2],[12],[11],[1,5],[1,6],[2,7],[11],[0]],[[2],[3,1,3],[2,1,2,2],[1,1,2,1],[2,1,3,1],[1,1,2,1],[1,1,2,1],[1,1,2,2],[1,2,3,3],[5,7],[5,6],[4,6],[4,7],[3,2,3],[2]]],
               [[[9],[13],[15],[5,5],[4,1,1,4],[4,1,1,4],[7],[9],[3,3],[3,3,3],[3,3,3],[4,3,4],[5,5],[13],[13]],[[4],[5,4],[5,6],[6,8],[4,9],[3,5,3],[3,2,3,2],[3,2,3,2],[3,2,3,2],[3,5,3],[4,9],[6,8],[5,6],[5,4],[4]]],
-              [[[1,1],[0],[1],[1,1],[5]],[[2],[1,1],[1,1],[1,1],[2]]]]         #[Picross[[Rows1],[Rows2]],[Columns1]]]
+              [[[4],[1,1],[3],[1],[3]],[[0],[1,1],[5],[1,1,1],[3]]]]         #[Picross[[Rows1],[Rows2]],[Columns1]]]
 
 
 
@@ -257,9 +257,70 @@ def cross (x,y,size): #draw a cross to show the cursor location on grid proporti
     color('black')
     pensize(1)
 
+def X_mark(x,y,size,X_list,xlist,ylist,square_list):
+    """ penup()
+    setheading(-45)
+    goto(x-size/8,y-size/8)
+    pendown()
+    forward((6*size)/8)
+    penup()
+    setheading(45)
+    goto(x-size/8,y-(7*size)/8)
+    pendown()
+    forward((6*size)/8)
+    penup()
+    setheading(0) """
+    if square_list[ylist][xlist]==1 or X_list[ylist][xlist]==1 :
+        square_list[ylist][xlist]=0
+        X_list[ylist][xlist]=0
 
 
-def square (x,y,size,square_list,xlist,ylist):   #draw a square at coordinate to place a square on the picross 
+    elif square_list[ylist][xlist]==0:
+        X_list[ylist][xlist]=1
+
+
+
+
+def show_X (size,X_list):   #draws squares on picross with the player_list
+
+    if size == 5:   #give the number of px to move to be aligned with the grid 
+        mult=100
+    if size == 10:
+        mult=50
+    if size == 15:
+        mult=33
+    if size == 20:
+        mult=25
+    if size == 25:
+        mult=20
+
+    pensize(3)
+    penup()
+    setheading(0)
+    for y in range (len(X_list[-1])):
+        for x in range (len(X_list[-1])):
+            if X_list[y][x]==1:
+                color('chocolate')
+                
+                goto(x*mult,-y*mult+((size-1)*mult))
+                setheading(45)
+                pendown()
+                forward(sqrt(mult**2+mult**2))
+                penup()
+                setheading(0)
+                forward(-mult)
+                setheading(-45)
+                pendown()
+                forward(sqrt(mult**2+mult**2))
+                penup()
+                setheading(0)
+    setheading(0)
+    pensize(1)
+    color('black')
+
+   
+
+def square (x,y,size,square_list,xlist,ylist,X_list):   #draw a square at coordinate to place a square on the picross 
     penup()
     setheading(0)
     goto(x-size/2,y-size/2)
@@ -270,12 +331,15 @@ def square (x,y,size,square_list,xlist,ylist):   #draw a square at coordinate to
         left(90)
     end_fill()
     penup()
-    if square_list[ylist][xlist]==1:
+    if square_list[ylist][xlist]==1 or X_list[ylist][xlist]==1 :
         square_list[ylist][xlist]=0
+        X_list[ylist][xlist]=0
 
 
-    else:
+    elif X_list[ylist][xlist]==0:
         square_list[ylist][xlist]=1
+
+
 
     
         
@@ -512,7 +576,7 @@ def Numbers(size,selected,List_num):
     
 
 
-def control (size,square_list,Solve_list,select,Num_list):
+def control (size,square_list,Solve_list,select,Num_list,X_list):
 
     if size == 5:   #give the number of px to move to be aligned with the grid and is also used in the arrow size
         move=100
@@ -558,6 +622,7 @@ def control (size,square_list,Solve_list,select,Num_list):
                 #arrow(cursor_row,500,'down',move)
                 #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
+                show_X(size,X_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
                 #Numbers(size,select,Num_list)
@@ -574,6 +639,7 @@ def control (size,square_list,Solve_list,select,Num_list):
                 #arrow(cursor_row,500,'down',move)
                 #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
+                show_X(size,X_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
                 #Numbers(size,select,Num_list)
@@ -592,6 +658,7 @@ def control (size,square_list,Solve_list,select,Num_list):
                 #arrow(cursor_row,500,'down',move)
                 #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
+                show_X(size,X_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
                 #Numbers(size,select,Num_list)
@@ -608,6 +675,7 @@ def control (size,square_list,Solve_list,select,Num_list):
                 #arrow(cursor_row,500,'down',move)
                 #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
+                show_X(size,X_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
                 #Numbers(size,select,Num_list)
@@ -624,6 +692,7 @@ def control (size,square_list,Solve_list,select,Num_list):
                 #arrow(cursor_row,500,'down',move)
                 #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
+                show_X(size,X_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
                 #Numbers(size,select,Num_list)
@@ -640,6 +709,7 @@ def control (size,square_list,Solve_list,select,Num_list):
                 #arrow(cursor_row,500,'down',move)
                 #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
+                show_X(size,X_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
                 #Numbers(size,select,Num_list)
@@ -657,6 +727,7 @@ def control (size,square_list,Solve_list,select,Num_list):
                 #arrow(cursor_row,500,'down',move)
                 #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
+                show_X(size,X_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
                 #Numbers(size,select,Num_list)
@@ -673,6 +744,7 @@ def control (size,square_list,Solve_list,select,Num_list):
                 #arrow(cursor_row,500,'down',move)
                 #arrow(0,cursor_column,'right',move)
                 show_square(size,square_list)
+                show_X(size,X_list)
                 cross(cursor_row,cursor_column,move)
                 choose(size)
                 #Numbers(size,select,Num_list)
@@ -687,11 +759,31 @@ def control (size,square_list,Solve_list,select,Num_list):
             tracer(0,0)
             #arrow(cursor_row,500,'down',move)
             #arrow(0,cursor_column,'right',move)
-            square(cursor_row,cursor_column,move,square_list,xlistpos,ylistpos)
+            square(cursor_row,cursor_column,move,square_list,xlistpos,ylistpos,X_list)
             show_square(size,square_list)
+            show_X(size,X_list)
             cross(cursor_row,cursor_column,move)
             choose(size)
-            Numbers(size,select,Num_list)
+            #Numbers(size,select,Num_list)
+            Frame_counter+=1
+
+            if square_list == Solve_list[0]:
+                Victory=1
+            tracer(1,0)
+            sleep(0.1)
+
+        elif keyboard.is_pressed('x'):
+            #clearscreen()
+            tracer(0,0)
+            #arrow(cursor_row,500,'down',move)
+            #arrow(0,cursor_column,'right',move)
+            X_mark(cursor_row,cursor_column,move,X_list,xlistpos,ylistpos,square_list)
+            print(X_list)
+            show_square(size,square_list)
+            show_X(size,X_list)
+            cross(cursor_row,cursor_column,move)
+            choose(size)
+            #Numbers(size,select,Num_list)
             Frame_counter+=1
 
             if square_list == Solve_list[0]:
@@ -704,6 +796,7 @@ def control (size,square_list,Solve_list,select,Num_list):
             clearscreen()
             tracer(0,0)
             show_square(size,square_list)
+            show_X(size,X_list)
             cross(cursor_row,cursor_column,move)
             choose(size)
             Numbers(size,select,Num_list)
@@ -774,7 +867,8 @@ def start_player_list(size):
 
 
 Player_list=start_player_list(size)
+X_Player_list=start_player_list(size)
 
-control(size,Player_list,Picross_list[select],select,Numbers_list)   #launch game
+control(size,Player_list,Picross_list[select],select,Numbers_list,X_Player_list)   #launch game
 
         
