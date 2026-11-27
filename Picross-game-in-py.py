@@ -11,7 +11,7 @@ import keyboard
 #size in 25x25 = 20x25px 
 
 # all need to be 500 by 500 px
-
+hideturtle()
 screen = Screen()
 screen.setup(width=1100, height=1100)
 
@@ -119,7 +119,6 @@ Picross_list=[[[[1,0,1,0,1],
                 [0,0,1,1,1],
                 [0,0,1,0,0],
                 [0,1,1,1,0]],'P like picross ;)']]  #List of all curent picross  [LIST[Picross[rows0[Column0,Column1,ect]],Name]]
-print(Picross_list[0][0])
 Solution_list=[]            #Current playing picross 
 Player_list=[]              #Squares placed by player
 Numbers_list=[[[[1,1,1],[5],[3],[5],[5]],[[2,2],[4],[5],[4],[2,2]]],
@@ -134,7 +133,7 @@ Numbers_list=[[[[1,1,1],[5],[3],[5],[5]],[[2,2],[4],[5],[4],[2,2]]],
 
 
 
-print(Numbers_list[0])
+
 
 
 def start_player_list(size):
@@ -191,7 +190,6 @@ def grid(rows,columns,size) : #set a grid of rows and columns with square
     for b in range (rows+1):
         if b+1 == 6 or b+1 == 11 or b+1 == 16 or b+1 == 21 or b+1 == 26 :
             if b+1 != mult+1:
-                print(b+1,mult+1)
                 color('coral2')
                 pensize(2)
         penup()
@@ -775,7 +773,6 @@ def control (size,square_list,Solve_list,select,Num_list,X_list):
             #arrow(cursor_row,500,'down',move)
             #arrow(0,cursor_column,'right',move)
             X_mark(cursor_row,cursor_column,move,X_list,xlistpos,ylistpos,square_list)
-            print(X_list)
             show_square(size,square_list)
             show_X(size,X_list)
             cross(cursor_row,cursor_column,move)
@@ -790,7 +787,6 @@ def control (size,square_list,Solve_list,select,Num_list,X_list):
 
         """ if timestart<=round(time()-1,0):
             tracer(0,0)
-            print(elaspsed)
             elaspsed+=1
             penup()
             goto(-300,200)
@@ -864,9 +860,13 @@ def control (size,square_list,Solve_list,select,Num_list,X_list):
     pendown()
     write(Solve_list[1], align="center", font=("Courier", 22, "normal"))
     penup()
-    goto(0,-400)
+    goto(0,-350)
     pendown()
     write('Press c to exit', align="center", font=("Courier", 16, "normal"))
+    penup()
+    goto(0,-400)
+    pendown()
+    write('Or, Press X to go back to main menu', align="center", font=("Courier", 16, "normal"))
     hideturtle()
     tracer(1,0)
 
@@ -876,6 +876,9 @@ def control (size,square_list,Solve_list,select,Num_list,X_list):
     while exit==0:
         if keyboard.is_pressed('c'):
             exit=1
+        if keyboard.is_pressed('x'):
+                    exit=2
+                    return 1
 
 
 
@@ -891,9 +894,15 @@ def start_player_list(size):
             P_list[-1].append(0)
     return P_list
 
-
+reset=0
 Player_list=start_player_list(size)
 X_Player_list=start_player_list(size)
-control(size,Player_list,Picross_list[select],select,Numbers_list,X_Player_list)   #launch game
+reset=control(size,Player_list,Picross_list[select],select,Numbers_list,X_Player_list)   #launch game
+while reset==1:
+    clearscreen()
+    select,size=Picross_selection(Picross_list)
+    Player_list=start_player_list(size)
+    X_Player_list=start_player_list(size)
+    reset=control(size,Player_list,Picross_list[select],select,Numbers_list,X_Player_list)   #launch game again
 
         
