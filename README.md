@@ -16,6 +16,10 @@ Picross From Mario's Picross On Game Boy and various picross S games from ninten
 >  Ported Picross are the only thing made with help of Ai in this code because porting 7 (2 to 8) picross by hand from 5x5 to 15x15
 would take so much time and be boring .
 
+>[!NOTE]
+>   Some Picross like 2,7,8 are large (15x15) and can be quite 
+> slow for more representative and playable Picross try the 10x10 and 5x5 ones
+
 ## Base of game
 
 ### - Controls
@@ -53,6 +57,9 @@ X= blocks (overlapping ones)
 += non-overlapping blocks   
 #= counting block from each side.  
 _= No blocks
+
+
+Take your time you are not limited by time
 
 ## Included Picross
 <ol>
