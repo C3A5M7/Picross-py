@@ -162,12 +162,23 @@ def choose (picross_size):
         grid(25,25,20)
 
 def grid(rows,columns,size) : #set a grid of rows and columns with square 
+    if size == 100:   #give the number of px to move to be aligned with the grid 
+        mult=5
+    if size == 50:
+        mult=10
+    if size == 33:
+        mult=15
+    if size == 25:
+        mult=20
+    if size == 20:
+        mult=25
     setheading(90)
     color('grey')
     for a in range (columns+1):
         if a+1 == 6 or a+1 == 11 or a+1 == 16 or a+1 == 21 or a+1 == 26 :
-            pensize(2)
-            color('lawngreen')
+            if a+1 != mult+1:
+                pensize(2)
+                color('coral2')
         penup()
         goto(a*size,0)
         pendown()
@@ -179,8 +190,10 @@ def grid(rows,columns,size) : #set a grid of rows and columns with square
     setheading(0)
     for b in range (rows+1):
         if b+1 == 6 or b+1 == 11 or b+1 == 16 or b+1 == 21 or b+1 == 26 :
-            color('lawngreen')
-            pensize(2)
+            if b+1 != mult+1:
+                print(b+1,mult+1)
+                color('coral2')
+                pensize(2)
         penup()
         goto(0,b*size)
         pendown()
@@ -479,7 +492,7 @@ def Numbers(size,selected,List_num):
             penup()
             goto((-30+(-20*len(Current_picross[0][a])))+b*20,488-(move/2+(move*a)))
             pendown()
-            write(Current_picross[0][a][b], align="center", font=("Courier", 16, "bold"))
+            write(Current_picross[0][a][b], align="center", font=("Courier", 22, "normal"))
 
 
     for a in range (len(Current_picross[1])):
@@ -487,7 +500,7 @@ def Numbers(size,selected,List_num):
             penup()
             goto((move/2+(move*a))+0,(-30+(-20*len(Current_picross[1][a])))+b*20)
             pendown()
-            write(Current_picross[1][a][(len(Current_picross[1][a])-1)-b], align="center", font=("Courier", 16, "bold"))
+            write(Current_picross[1][a][(len(Current_picross[1][a])-1)-b], align="center", font=("Courier", 22, "normal"))
                     
         
 
@@ -698,7 +711,6 @@ def control (size,square_list,Solve_list,select,Num_list):
             tracer(1,0)
 
 
-        #print(xlistpos,ylistpos)
         sleep(0.01)
 
     tracer(0,0)
@@ -723,19 +735,19 @@ def control (size,square_list,Solve_list,select,Num_list):
     color('black')
     goto(0,100)
     pendown()
-    write('You win', align="center", font=("Courier", 16, "bold"))
+    write('You win', align="center", font=("Courier", 48, "normal"))
     penup()
     goto(0,-50)
     pendown()
-    write('Picross name :', align="center", font=("Courier", 16, "bold"))
+    write('Picross name :', align="center", font=("Courier", 28, "normal"))
     penup()
     goto(0,-100)
     pendown()
-    write(Solve_list[1], align="center", font=("Courier", 16, "bold"))
+    write(Solve_list[1], align="center", font=("Courier", 22, "normal"))
     penup()
     goto(0,-400)
     pendown()
-    write('Press c to exit', align="center", font=("Courier", 16, "bold"))
+    write('Press c to exit', align="center", font=("Courier", 16, "normal"))
     hideturtle()
     tracer(1,0)
 

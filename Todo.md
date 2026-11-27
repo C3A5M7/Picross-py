@@ -1,4 +1,3 @@
-- [ ] Fill cursor
 - [X] edges cases
 - [X] add number on rows and columns(down)
 - [X] add example picross
@@ -7,4 +6,4 @@
 - [ ] add anti-cursor (area where you can't place boxes)
 - [X] add Victory screen
 - [ ] add time to Victory screen
-- [ ] limit green bar on edges
+- [X] limit color bar on edges
