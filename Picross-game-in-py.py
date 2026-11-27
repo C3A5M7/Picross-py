@@ -237,23 +237,18 @@ def square(x,y,size): #make a square of side length = size at x,y cordinate
 
 
 def cross (x,y,size): #draw a cross to show the cursor location on grid proportional to grid size
-    pensize(2)
+    pensize(3)
     color ('grey')
     penup()
     goto(x,y)
-    setheading(135)
+    setheading(90)
     forward ((size/2)*0.8)
-    left(180)
+    setheading(-45)
     pendown()
-    forward (size*0.8)
+    for i in range (4):
+        forward (sqrt((size/2*0.8)**2+(size/2*0.8)**2))
+        right(90)
     penup()
-
-    goto(x,y)
-    setheading(45)
-    forward ((size/2)*0.8)
-    left(180)
-    pendown()
-    forward (size*0.8)
     color('black')
     pensize(1)
 
