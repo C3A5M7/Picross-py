@@ -598,7 +598,9 @@ def control (size,square_list,Solve_list,select,Num_list,X_list):
     Victory=0
 
     Frame_counter=0         #something to count the number of drawed frame since last clear (this help to be less flashing)
-    
+    #timestart=round(time(),0)
+    #elaspsed=0
+          
 
     tracer(0,0)         #show the screen
     choose(size)
@@ -786,6 +788,35 @@ def control (size,square_list,Solve_list,select,Num_list,X_list):
             tracer(1,0)
             sleep(0.1)
 
+        """ if timestart<=round(time()-1,0):
+            tracer(0,0)
+            print(elaspsed)
+            elaspsed+=1
+            penup()
+            goto(-300,200)
+            pendown()
+            begin_fill()
+            color('white')
+            goto(-100,200)
+            goto(-100,0)
+            goto(-300,0)
+            goto(-300,200)
+            end_fill()
+            if elaspsed%10==1:
+                Frame_counter==100  #for make the screen clear
+            color('black')
+            tracer(1,0)
+            penup()
+            goto(-250,150)
+            write('Time : ', align="center", font=("Courier", 16, "normal"))
+            goto(-200,150)
+            write(round(elaspsed/60,0), align="center", font=("Courier", 16, "normal"))
+            goto(-150,150)
+            write(elaspsed%60, align="center", font=("Courier", 16, "normal"))
+            timestart=round(time(),0)
+            color('black')
+            tracer(1,0) """
+
 
         if Frame_counter > frame_limit :
             clearscreen()
@@ -847,7 +878,7 @@ def control (size,square_list,Solve_list,select,Num_list,X_list):
             exit=1
 
 
-        
+
 size=5        
 
 select,size=Picross_selection(Picross_list)
@@ -863,7 +894,6 @@ def start_player_list(size):
 
 Player_list=start_player_list(size)
 X_Player_list=start_player_list(size)
-
 control(size,Player_list,Picross_list[select],select,Numbers_list,X_Player_list)   #launch game
 
         
