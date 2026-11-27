@@ -251,18 +251,6 @@ def cross (x,y,size): #draw a cross to show the cursor location on grid proporti
     pensize(1)
 
 def X_mark(x,y,size,X_list,xlist,ylist,square_list):
-    """ penup()
-    setheading(-45)
-    goto(x-size/8,y-size/8)
-    pendown()
-    forward((6*size)/8)
-    penup()
-    setheading(45)
-    goto(x-size/8,y-(7*size)/8)
-    pendown()
-    forward((6*size)/8)
-    penup()
-    setheading(0) """
     if square_list[ylist][xlist]==1 or X_list[ylist][xlist]==1 :
         square_list[ylist][xlist]=0
         X_list[ylist][xlist]=0

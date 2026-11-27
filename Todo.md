@@ -5,4 +5,5 @@
 - [X] add anti-cursor (area where you can't place boxes)
 - [X] add Victory screen
 - [X] limit color bar on edges
-- [ ] add possibility to restart the game 
+- [X] add possibility to restart the game 
+- [ ] Finish README
