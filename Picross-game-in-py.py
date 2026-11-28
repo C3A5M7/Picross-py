@@ -365,7 +365,7 @@ def show_square (size,square_list):   #draws squares on picross with the player_
     color('black')
    
         
-def Picross_selection(List):
+def Picross_selection(List,completed):
     selected=0
     list_size=[]
     
@@ -379,9 +379,10 @@ def Picross_selection(List):
     penup()
     goto(-300,200)
     write("Press 1 to 9 on ", align="left", font=("Courier", 16, "bold"))
-    penup()
     goto(-300,175)
     write("your keyboard", align="left", font=("Courier", 16, "bold"))
+    goto(-300,150)
+    write("to select a Picross", align="left", font=("Courier", 16, "bold"))
 
 
 
@@ -392,15 +393,26 @@ def Picross_selection(List):
     goto(5,275)
     pendown()
     write("Picross 1", align="left", font=("Courier", 16, "bold"))
+    if completed[0]==1:
+        penup()
+        goto(5,250)
+        pendown()
+        write("Castle", align="left", font=("Courier", 12, "bold"))
     penup()
     goto(5,225)
     pendown()
     write('5X5', align="left", font=("Courier", 16, "bold"))
     
+    
     penup()
     goto(105,275)
     pendown()
     write("Picross 2", align="left", font=("Courier", 16, "bold"))
+    if completed[1]==1:
+            penup()
+            goto(105,250)
+            pendown()
+            write("Game Boy", align="left", font=("Courier", 12, "bold"))
     penup()
     goto(105,225)
     pendown()
@@ -410,6 +422,11 @@ def Picross_selection(List):
     goto(205,275)
     pendown()
     write("Picross 3", align="left", font=("Courier", 16, "bold"))
+    if completed[2]==1:
+            penup()
+            goto(205,250)
+            pendown()
+            write("Snail", align="left", font=("Courier", 12, "bold"))
     penup()
     goto(205,225)
     pendown()
@@ -419,6 +436,11 @@ def Picross_selection(List):
     goto(5,175)
     pendown()
     write("Picross 4", align="left", font=("Courier", 16, "bold"))
+    if completed[3]==1:
+            penup()
+            goto(5,150)
+            pendown()
+            write("Glove", align="left", font=("Courier", 12, "bold"))
     penup()
     goto(5,125)
     pendown()
@@ -428,6 +450,11 @@ def Picross_selection(List):
     goto(105,175)
     pendown()
     write("Picross 5", align="left", font=("Courier", 16, "bold"))
+    if completed[4]==1:
+            penup()
+            goto(105,150)
+            pendown()
+            write("Star", align="left", font=("Courier", 12, "bold"))
     penup()
     goto(105,125)
     pendown()
@@ -437,6 +464,11 @@ def Picross_selection(List):
     goto(205,175)
     pendown()
     write("Picross 6", align="left", font=("Courier", 16, "bold"))
+    if completed[5]==1:
+            penup()
+            goto(205,150)
+            pendown()
+            write("Spike", align="left", font=("Courier", 12, "bold"))
     penup()
     goto(205,125)
     pendown()
@@ -446,6 +478,11 @@ def Picross_selection(List):
     goto(5,75)
     pendown()
     write("Picross 7", align="left", font=("Courier", 16, "bold"))
+    if completed[6]==1:
+            penup()
+            goto(5,50)
+            pendown()
+            write("Burger", align="left", font=("Courier", 12, "bold"))
     penup()
     goto(5,25)
     pendown()
@@ -455,6 +492,11 @@ def Picross_selection(List):
     goto(105,75)
     pendown()
     write("Picross 8", align="left", font=("Courier", 16, "bold"))
+    if completed[7]==1:
+            penup()
+            goto(105,50)
+            pendown()
+            write("Phone", align="left", font=("Courier", 12, "bold"))
     penup()
     goto(105,25)
     pendown()
@@ -464,6 +506,11 @@ def Picross_selection(List):
     goto(205,75)
     pendown()
     write("Picross 9", align="left", font=("Courier", 16, "bold"))
+    if completed[8]==1:
+            penup()
+            goto(205,50)
+            pendown()
+            write("P like Picross", align="left", font=("Courier", 12, "bold"))
     penup()
     goto(205,25)
     pendown()
@@ -516,6 +563,7 @@ def Picross_selection(List):
 
         
 def Title_screen():
+    tracer(0,0)
     penup()
     goto(0,0)
     pendown()
@@ -525,6 +573,7 @@ def Title_screen():
     pendown()
     write('Press C to continue ', align="center", font=("Courier", 26, "normal"))
     penup()
+    tracer(1,0)
 
 
 
@@ -889,15 +938,16 @@ def control (size,square_list,Solve_list,select,Num_list,X_list):
                     exit=2
                     return 1
 
-
+completed_list=[0,0,0,0,0,0,0,0,0]
 title=0
 size=5        
 Title_screen() 
 while title==0:
     if keyboard.is_pressed('c'):
         title=1
+    
 clearscreen()
-select,size=Picross_selection(Picross_list)
+select,size=Picross_selection(Picross_list,completed_list)
     
 def start_player_list(size):
     P_list=[]
@@ -911,16 +961,19 @@ reset=0
 Player_list=start_player_list(size)
 X_Player_list=start_player_list(size)
 reset=control(size,Player_list,Picross_list[select],select,Numbers_list,X_Player_list)   #launch game
+completed_list[select]=1
 while reset==1:
     clearscreen()
+    title=0
     Title_screen() 
     while title==0:
         if keyboard.is_pressed('c'):
             title=1
     clearscreen()
-    select,size=Picross_selection(Picross_list)
+    select,size=Picross_selection(Picross_list,completed_list)
     Player_list=start_player_list(size)
     X_Player_list=start_player_list(size)
     reset=control(size,Player_list,Picross_list[select],select,Numbers_list,X_Player_list)   #launch game again
+    completed_list[select]=1
 
         

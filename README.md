@@ -61,6 +61,13 @@ _= No blocks
 
 Take your time you are not limited by time
 
+
+## Features
+- Teleport cursor when on the side to get to the other side
+- Blocks and Diamonds
+- Various Picross from 5x5 to 15x15
+- Main menu
+
 ## Included Picross
 <ol>
 <li>Castle from Picross S (5X5)</li>
