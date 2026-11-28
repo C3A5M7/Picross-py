@@ -376,6 +376,17 @@ def Picross_selection(List):
 
 
     tracer(0,0)
+    penup()
+    goto(-300,200)
+    write("Press 1 to 9 on ", align="left", font=("Courier", 16, "bold"))
+    penup()
+    goto(-300,175)
+    write("your keyboard", align="left", font=("Courier", 16, "bold"))
+
+
+
+
+
     grid(3,3,100)
     penup()
     goto(5,275)
@@ -504,6 +515,16 @@ def Picross_selection(List):
     return(selected-1,size)
 
         
+def Title_screen():
+    penup()
+    goto(0,0)
+    pendown()
+    write('Picross - Py', align="center", font=("Courier", 56, "normal"))
+    penup()
+    goto(0,-100)
+    pendown()
+    write('Press C to continue ', align="center", font=("Courier", 26, "normal"))
+    penup()
 
 
 
@@ -869,11 +890,15 @@ def control (size,square_list,Solve_list,select,Num_list,X_list):
                     return 1
 
 
-
+title=0
 size=5        
-
+Title_screen() 
+while title==0:
+    if keyboard.is_pressed('c'):
+        title=1
+clearscreen()
 select,size=Picross_selection(Picross_list)
-
+    
 def start_player_list(size):
     P_list=[]
     for i in range (size):
@@ -887,6 +912,11 @@ Player_list=start_player_list(size)
 X_Player_list=start_player_list(size)
 reset=control(size,Player_list,Picross_list[select],select,Numbers_list,X_Player_list)   #launch game
 while reset==1:
+    clearscreen()
+    Title_screen() 
+    while title==0:
+        if keyboard.is_pressed('c'):
+            title=1
     clearscreen()
     select,size=Picross_selection(Picross_list)
     Player_list=start_player_list(size)
