@@ -373,9 +373,26 @@ def Picross_selection(List,completed):
     for i in range(len(List)):
         list_size.append(len(List[i][0]))
 
-
-
     tracer(0,0)
+    pensize(10)
+    setheading(45)
+    for i in range (10):
+        penup()
+        goto(500+(-i*40),-600)
+        pendown()
+        forward(1100)
+    penup()
+    pensize(5)
+    setheading(225)
+    goto(-700,700)
+    pendown()
+    for i in range (25):
+        circle(30+(i*10))
+    setheading(0)
+    pensize(1)
+
+    
+    
     penup()
     goto(-300,200)
     write("Press 1 to 9 on ", align="left", font=("Courier", 16, "bold"))
@@ -565,6 +582,10 @@ def Picross_selection(List,completed):
 def Title_screen():
     tracer(0,0)
     penup()
+    goto(0,-400)
+    pendown()
+    write('Made By C3A5M7', align="center", font=("Courier", 22, "normal"))
+    penup()
     goto(0,0)
     pendown()
     write('Picross - Py', align="center", font=("Courier", 56, "normal"))
@@ -572,7 +593,29 @@ def Title_screen():
     goto(0,-100)
     pendown()
     write('Press C to continue ', align="center", font=("Courier", 26, "normal"))
+    pensize(10)
+    setheading(45)
+    for i in range (10):
+        penup()
+        goto(500+(-i*40),-600)
+        pendown()
+        forward(1100)
     penup()
+    pensize(5)
+    setheading(225)
+    goto(-700,700)
+    pendown()
+    for i in range (30):
+        circle(30+(i*10))
+    setheading(0)
+    pensize(1)
+
+
+
+
+
+
+    setheading(0)    
     tracer(1,0)
 
 
